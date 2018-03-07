@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Button from 'material-ui/Button';
+import {connect} from 'react-redux';
 
 class ItemsPage extends React.Component {
     constructor(props, context) {
@@ -9,6 +10,9 @@ class ItemsPage extends React.Component {
         this.state = { 
             course: { title: "" }
         };
+
+        this.onTitleChange = this.onTitleChange.bind(this);
+        this.onClickSave = this.onClickSave.bind(this);
     }
 
     // This runs every time the user types a character in the input box. 
