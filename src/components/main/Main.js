@@ -18,6 +18,7 @@ import PlaylistAdd from 'material-ui-icons/PlaylistAdd';
 import InfoOutline from 'material-ui-icons/InfoOutline';
 import ListContent from '../listContent/ListContent';
 import ListItemLink from '../listContent/ListItemLink';
+import { Route } from 'react-router';
 
 const drawerWidth = 240;
 
@@ -74,7 +75,7 @@ function Main(props) {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.toolbar} />
+        <div className={classes.toolbar} />        
         <List component="nav">
             <ListItemLink to="/" primary="To-Do" icon={<ListIcon />} />
             <ListItemLink to="/additem" primary="Add Item" icon={<PlaylistAdd />} />
@@ -85,7 +86,6 @@ function Main(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography noWrap>{'Put some content here.'}</Typography>
         {routes}
       </main>
     </div>

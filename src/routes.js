@@ -1,16 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
-import HomePage from './components/home/HomePage';
+import ItemsPage from './components/items/ItemsPage';
+import AddItemPage from './components/items/AddItemPage';
 import AboutPage from './components/about/AboutPage';
-import AddItemPage from './components/addItem/AddItemPage';
 
 export default (
     <Switch>
-        <Route exact path='/' component={HomePage}/>
+        <Route exact path='/' component={ItemsPage}/>
         <Route path='/additem' component={AddItemPage}/>
         <Route path='/about' component={AboutPage}/>
-        {/* both /roster and /roster/:number begin with /roster */}
-        {/* <Route path='/roster' component={Roster}/>
-        <Route path='/schedule' component={Schedule}/> */}
     </Switch>
 )
