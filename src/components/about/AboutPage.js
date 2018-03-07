@@ -1,5 +1,6 @@
 import React from 'react';
 
+// TODO: refactor to SLR
 class AboutPage extends React.Component {
     render() {
         return (
