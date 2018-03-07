@@ -13,23 +13,20 @@ const styles = theme => ({
     }
 });
 
-class ListItemLink extends React.Component {
-    renderLink = itemProps => <NavLink exact to={this.props.to} {...itemProps} />;
+const ListItemLink = ({theme, classes, icon, primary, secondary, to}) => {
+  const renderLink = itemProps => <NavLink exact to={to} {...itemProps} />;
   
-    render() {
-      const { theme, classes, icon, primary, secondary} = this.props;
+  console.log(classes.content.backgroundColor);
+  return (
+    <li>
+      <ListItem button component={renderLink} activeStyle={{backgroundColor: "#C5CAE9"}}>
+        {<ListItemIcon>{icon}</ListItemIcon>}
+        <ListItemText inset primary={primary} secondary={secondary} />
+      </ListItem>
+    </li>
+  );
+};
 
-      console.log(classes.content.backgroundColor);
-      return (
-        <li>
-          <ListItem button component={this.renderLink} activeStyle={{backgroundColor: "#C5CAE9"}}>
-            {<ListItemIcon>{icon}</ListItemIcon>}
-            <ListItemText inset primary={primary} secondary={secondary} />
-          </ListItem>
-        </li>
-      );
-    }
-}
 
 ListItemLink.propTypes = {
     icon: PropTypes.node.isRequired,
