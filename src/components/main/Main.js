@@ -56,6 +56,12 @@ const styles = theme => ({
   },
 });
 
+// refactor
+// 1. use arrow function, const Main = ({classes}) => {}
+// 2. move it to App component
+// 3. move AppBar to Header
+// 4. move Drawer to AppSidebar
+// 5. Consider refactor the AppSidebar component according to the "Presentational and Container Components" pattern
 function Main(props) {
   const { classes } = props;
 
