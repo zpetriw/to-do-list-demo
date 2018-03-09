@@ -1,4 +1,3 @@
-export function createItem(course) {
-    return { type: 'CREATE_COURSE', course}
-    // /return { type: 'CREATE_COURSE', course: course} // Can omit this in ES6
+export function createItem(item) {
+    return { type: 'CREATE_ITEM', item};
 }

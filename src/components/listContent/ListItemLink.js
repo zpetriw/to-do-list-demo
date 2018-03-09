@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
-import { withTheme } from 'material-ui/styles';
 
 // Question: How do we show which link we are currently on (using Material UI)? See hint below?... 
 
@@ -13,14 +12,14 @@ const styles = theme => ({
     }
 });
 
-const ListItemLink = ({theme, classes, icon, primary, secondary, to}) => {
+const ListItemLink = ({classes, icon, primary, secondary, to}) => {
 
-  const renderLink = itemProps => <NavLink exact to={to} {...itemProps} />;
-  
-  console.log(classes.content.backgroundColor);
+  // I cannot get this to work with 'activeStyle={classes}' or classes.content.
+  const renderLink = itemProps => <NavLink activeStyle={{backgroundColor: "#C5CAE9"}} exact to={to} {...itemProps} />;
+
   return (
     <li>
-      <ListItem button component={renderLink} activeStyle={{backgroundColor: "#C5CAE9"}}>
+      <ListItem button component={renderLink} >
         {<ListItemIcon>{icon}</ListItemIcon>}
         <ListItemText inset primary={primary} secondary={secondary} />
       </ListItem>
@@ -29,9 +28,10 @@ const ListItemLink = ({theme, classes, icon, primary, secondary, to}) => {
 };
 
 ListItemLink.propTypes = {
+    classes: PropTypes.object.isRequired,
     icon: PropTypes.node.isRequired,
-    primary: PropTypes.node.isRequired,
+    primary: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired
-}
+};
 
 export default withStyles(styles)(ListItemLink);

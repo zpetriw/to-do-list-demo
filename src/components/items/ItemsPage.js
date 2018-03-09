@@ -1,14 +1,22 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import Button from 'material-ui/Button';
 import {connect} from 'react-redux';
+import * as itemActions from '../../actions/itemActions';
+import PropTypes from 'prop-types';
+import { compose } from 'recompose';
+import { withStyles } from 'material-ui/styles';
+
+const styles = theme => ({
+    root: {
+      textAlign: "center"
+    }
+});
 
 class ItemsPage extends React.Component {
     constructor(props, context) {
         super(props, context);
         
         this.state = { 
-            course: { title: "" }
+            item: { title: "" }
         };
 
         this.onTitleChange = this.onTitleChange.bind(this);
@@ -17,24 +25,29 @@ class ItemsPage extends React.Component {
 
     // This runs every time the user types a character in the input box. 
     onTitleChange(event) {
-        const course = this.state.course;
-        course.title = event.target.value;
-        this.setState({course: course});
+        const item = this.state.item;
+        item.title = event.target.value;
+        this.setState({item: item});
     }
 
     onClickSave() {
-        alert(`Saving ${this.state.course.title}`);
+        this.props.dispatch(itemActions.createItem(this.state.item));
+    }
+
+    itemRow(item, index) {
+        return <div key={index}>{item.title}</div>;
     }
 
     render() {
         return (
-            <div>
+            <div className={this.props.classes.root}>
                 <h1>Items</h1>
+                {this.props.items.map(this.itemRow)}
                 <h2>Add Item</h2>
                 <input
                     type="text"
                     onChange={this.onTitleChange}
-                    value={this.state.course.title} />
+                    value={this.state.item.title} />
 
                 <input
                     type="submit"
@@ -45,4 +58,22 @@ class ItemsPage extends React.Component {
     }
 }
 
-export default ItemsPage;
+ItemsPage.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    items: PropTypes.array.isRequired,
+    classes: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+    // This part assigns 'state.items' to 'props.items' for this 'ItemsPage' class.
+    return {
+        items: state.items
+    };
+}
+
+// Note: 'mapStateToProps' is what assigns 'state.items' to 'props.items' for this 'ItemsPage' class.
+// Without this method the state might still contains state.items, but props will never get a reference to it.
+export default compose(
+    withStyles(styles),
+    connect(mapStateToProps)
+)(ItemsPage);
