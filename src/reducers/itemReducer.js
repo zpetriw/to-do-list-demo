@@ -1,6 +1,8 @@
+import * as types from '../actions/actionTypes';
+
 export default function itemReducer(state = [], action) {
     switch(action.type) {
-        case 'CREATE_ITEM':
+        case types.CREATE_ITEM:
             return [...state,
                 Object.assign({}, action.item)
             ];

@@ -4,6 +4,8 @@ import * as itemActions from '../../actions/itemActions';
 import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import { withStyles } from 'material-ui/styles';
+import ItemInput from './ItemInput';
+import {bindActionCreators} from 'redux';
 
 const styles = theme => ({
     root: {
@@ -31,7 +33,7 @@ class ItemsPage extends React.Component {
     }
 
     onClickSave() {
-        this.props.dispatch(itemActions.createItem(this.state.item));
+        this.props.actions.createItem(this.state.item);
     }
 
     itemRow(item, index) {
@@ -44,23 +46,20 @@ class ItemsPage extends React.Component {
                 <h1>Items</h1>
                 {this.props.items.map(this.itemRow)}
                 <h2>Add Item</h2>
-                <input
-                    type="text"
-                    onChange={this.onTitleChange}
-                    value={this.state.item.title} />
-
-                <input
-                    type="submit"
-                    value="Save"
-                    onClick={this.onClickSave} />
+                <ItemInput 
+                    onClick={this.onClickSave} 
+                    onChange={this.onTitleChange} 
+                    textValue={this.state.item.title} 
+                    textLabel="Title" 
+                    buttonLabel="Save"/>
             </div>
         );
     }
 }
 
 ItemsPage.propTypes = {
-    dispatch: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired
 };
 
@@ -71,9 +70,15 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(itemActions, dispatch)
+    }
+}
+
 // Note: 'mapStateToProps' is what assigns 'state.items' to 'props.items' for this 'ItemsPage' class.
 // Without this method the state might still contains state.items, but props will never get a reference to it.
 export default compose(
     withStyles(styles),
-    connect(mapStateToProps)
+    connect(mapStateToProps, mapDispatchToProps)
 )(ItemsPage);

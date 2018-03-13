@@ -10,10 +10,10 @@ const styles = theme => ({
     }
   });
 
-const ItemCounterDisplay = props => {
+const ItemCounterDisplay = ({itemCount, classes}) => {
     return (
         <ListItem>
-            <ListItemText primary={`Items To Do: ${props.itemCount}`} className={props.classes.counter}/>
+            <ListItemText primary={`Items To Do: ${itemCount}`} className={classes.counter}/>
         </ListItem>
     );
 };
