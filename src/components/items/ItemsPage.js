@@ -13,7 +13,7 @@ const styles = theme => ({
     }
 });
 
-class ItemsPage extends React.Component {
+export class ItemsPage extends React.Component {
     constructor(props, context) {
         super(props, context);
         
@@ -44,7 +44,9 @@ class ItemsPage extends React.Component {
         return (
             <div className={this.props.classes.root}>
                 <h1>Items</h1>
-                {this.props.items.map(this.itemRow)}
+                <div id="items">
+                    {this.props.items.map(this.itemRow)}
+                </div>
                 <h2>Add Item</h2>
                 <ItemInput 
                     onClick={this.onClickSave} 

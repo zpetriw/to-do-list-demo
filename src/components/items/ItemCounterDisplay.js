@@ -6,11 +6,11 @@ import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
     counter: {
-      textAlign: "center"
+      textAlign: "center",
     }
   });
 
-const ItemCounterDisplay = ({itemCount, classes}) => {
+export const ItemCounterDisplay = ({classes, itemCount}) => {
     return (
         <ListItem>
             <ListItemText primary={`Items To Do: ${itemCount}`} className={classes.counter}/>

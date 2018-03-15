@@ -16,7 +16,7 @@ const styles = theme => ({
     }
 });
 
-const ItemInput = ({classes, textLabel, textValue, buttonLabel, onChange, onClick}) => {
+export const ItemInput = ({classes, textLabel, textValue, buttonLabel, onChange, onClick}) => {
     return (
         <div>
             <TextField

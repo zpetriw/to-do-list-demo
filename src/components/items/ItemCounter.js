@@ -7,7 +7,7 @@ import ItemCounterDisplay from './ItemCounterDisplay';
 // and consequently the child component will NOT re-render.
 // You need to explode the props and pass it as {...props}
 
-const ItemCounter = props => {
+export const ItemCounter = props => {
     return (
         <ItemCounterDisplay {...props}/>
     );

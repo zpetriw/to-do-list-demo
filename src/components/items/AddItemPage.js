@@ -8,7 +8,7 @@ const styles = theme => ({
       textAlign: "center"
     }
 });
-class AddItemPage extends React.Component {
+export class AddItemPage extends React.Component {
     render() {
         return (
             <div className={this.props.classes.root}>
