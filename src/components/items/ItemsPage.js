@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as itemActions from '../../actions/itemActions';
+import {createItem} from '../../actions/itemActions';
 import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import { withStyles } from 'material-ui/styles';
@@ -33,7 +33,8 @@ export class ItemsPage extends React.Component {
     }
 
     onClickSave() {
-        this.props.actions.createItem(this.state.item);
+        console.log(this.props.createItem);
+        this.props.createItem(this.state.item);
     }
 
     itemRow(item, index) {
@@ -61,7 +62,7 @@ export class ItemsPage extends React.Component {
 
 ItemsPage.propTypes = {
     items: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired,
+    createItem: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired
 };
 
@@ -72,15 +73,20 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(itemActions, dispatch)
-    }
-}
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         actions: bindActionCreators(itemActions, dispatch)
+//     }
+// }
 
 // Note: 'mapStateToProps' is what assigns 'state.items' to 'props.items' for this 'ItemsPage' class.
 // Without this method the state might still contains state.items, but props will never get a reference to it.
 export default compose(
     withStyles(styles),
-    connect(mapStateToProps, mapDispatchToProps)
+    connect(mapStateToProps, {createItem})
 )(ItemsPage);
+
+// export default compose(
+//     withStyles(styles),
+//     connect(mapStateToProps, {mapDispatchToProps})
+// )(ItemsPage);

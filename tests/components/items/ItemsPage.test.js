@@ -83,8 +83,9 @@ describe('When ItemInput renders', () => {
             // console.log(mountWrapper)
         });
 
-        it('should map itemActions to actions', () => {
-            expect();
+        it.only('should map action createItem', () => {
+            console.log(wrapper.dive().instance().props.createItem);
+            expect(wrapper.dive().instance().props.createItem).not.toBeNull();
         });
 
         it('should update store when action is called', () => {
