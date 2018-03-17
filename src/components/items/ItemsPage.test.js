@@ -3,11 +3,11 @@ import expect from 'expect';
 import {shallow, render} from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 import sinon from 'sinon';
-import ItemInput, { ItemInput as PresentationalItemInput } from '../../../src/components/items/ItemInput';
+import ItemInput from './ItemInput';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
-import ItemsPage, { ItemsPage as PresentationalItemsPage } from '../../../src/components/items/ItemsPage';
-import * as itemActions from '../../../src/actions/itemActions';
+import ConnectedItemsPage, {ItemsPage} from './ItemsPage';
+import * as itemActions from '../../actions/itemActions';
 
 // Note: 
 // toBe() means the two references must be for the same object.
@@ -31,9 +31,9 @@ describe('When ItemInput renders', () => {
                 textLabel: "Text label",
                 buttonLabel: "Button label",
                 items: [{title: "item1"}, {title: "item2"}]
-            }
+            };
             
-            wrapper = shallow(<PresentationalItemsPage {...props}/>);
+            wrapper = shallow(<ItemsPage {...props}/>);
         });
     
         it('should render <h1>, <h2>, and <ItemInput>', () => {
@@ -47,10 +47,10 @@ describe('When ItemInput renders', () => {
         });
 
         it('should pass component-bound props to ItemInput', () => {
-            expect(wrapper.find(ItemInput).onClick).toBe()
-            expect(wrapper.find(ItemInput).props().textValue).toEqual(wrapper.state().item.title)
-            expect(wrapper.find(ItemInput).props().onChange).toEqual(wrapper.instance().onTitleChange)
-            expect(wrapper.find(ItemInput).props().onClick).toEqual(wrapper.instance().onClickSave)
+            expect(wrapper.find(ItemInput).onClick).toBe();
+            expect(wrapper.find(ItemInput).props().textValue).toEqual(wrapper.state().item.title);
+            expect(wrapper.find(ItemInput).props().onChange).toEqual(wrapper.instance().onTitleChange);
+            expect(wrapper.find(ItemInput).props().onClick).toEqual(wrapper.instance().onClickSave);
         });
 
         it.skip('should call OnTitleChange when onChange is triggered', () => {
@@ -64,18 +64,18 @@ describe('When ItemInput renders', () => {
         let wrapper;
         let store;
         let mockStore;
-        let initialState = [{title: "item1"}, {title: "item2"}]
+        let initialState = [{title: "item1"}, {title: "item2"}];
 
         beforeEach(() => {
             mockStore = configureMockStore();
             store = mockStore({
                 items: initialState
-            })
-            wrapper = shallow(<ItemsPage store={store} />).dive();
+            });
+            wrapper = shallow(<ConnectedItemsPage store={store} />).dive();
         });
 
         it('should render a WithStyles() className', () => {
-            expect(wrapper.dive().props().className).toEqual(expect.stringContaining("ItemsPage"))
+            expect(wrapper.dive().props().className).toEqual(expect.stringContaining("ItemsPage"));
         });
 
         it('should map state.items to items', () => {
@@ -83,16 +83,8 @@ describe('When ItemInput renders', () => {
             // console.log(mountWrapper)
         });
 
-        it.only('should map action createItem', () => {
-            console.log(wrapper.dive().instance().props.createItem);
+        it('should map action createItem', () => {
             expect(wrapper.dive().instance().props.createItem).not.toBeNull();
-        });
-
-        it('should update store when action is called', () => {
-            store.dispatch(itemActions.createItem("New item"))
-            let actions = store.getActions()
-            expect(actions[0].type).toBe("CREATE_ITEM")
-            expect(actions[0].item).toBe("New item")
         });
 
     });

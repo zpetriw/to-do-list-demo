@@ -16,7 +16,7 @@ const styles = theme => ({
     }
 });
 
-export const ItemInput = ({classes, textLabel, textValue, buttonLabel, onChange, onClick}) => {
+export const ItemInput = ({classes, textLabel, textValue, buttonLabel, onChange, onClick, inputRef}) => {
     return (
         <div>
             <TextField
@@ -27,6 +27,7 @@ export const ItemInput = ({classes, textLabel, textValue, buttonLabel, onChange,
             margin="normal"
             onChange={onChange}
             value={textValue}
+            inputRef={inputRef}
             />
             <Button variant="raised" className={classes.button} onClick={onClick}>
                 {buttonLabel}
@@ -38,7 +39,11 @@ export const ItemInput = ({classes, textLabel, textValue, buttonLabel, onChange,
 ItemInput.propTypes = {
     classes: PropTypes.object.isRequired,
     textLabel: PropTypes.string.isRequired,
-    buttonLabel: PropTypes.string.isRequired
+    textValue: PropTypes.string.isRequired,
+    buttonLabel: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
+    inputRef: PropTypes.func,
 };
 
 export default compose(

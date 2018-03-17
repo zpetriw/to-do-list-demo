@@ -1,7 +1,7 @@
 import React from 'react';
 import expect from 'expect';
 import {shallow, render} from 'enzyme';
-import ItemCounterDisplay, { ItemCounterDisplay as PresentationalItemCounterDisplay } from '../../../src/components/items/ItemCounterDisplay';
+import ConnectedItemCounterDisplay, {ItemCounterDisplay} from './ItemCounterDisplay';
 import {ListItemText, ListItem} from 'material-ui';
 
 describe('When ItemCounterDisplay renders', () => {
@@ -16,9 +16,9 @@ describe('When ItemCounterDisplay renders', () => {
                 // We need to pass in 'classes' manually because it normally gets this from the connected WithStyles() component.
                 classes: {counter: "some class"},
                 itemCount: 2
-            }
+            };
             
-            wrapper = shallow(<PresentationalItemCounterDisplay {...props}/>);
+            wrapper = shallow(<ItemCounterDisplay {...props}/>);
         });
         it('should render <ListItem> and <ListItemText>', () => {
             expect(wrapper.find(ListItem).length).toBe(1);
@@ -43,9 +43,9 @@ describe('When ItemCounterDisplay renders', () => {
         beforeEach( () => {
             props = {
                 itemCount: 2
-            }
+            };
             
-            wrapper = shallow(<ItemCounterDisplay {...props}/>);
+            wrapper = shallow(<ConnectedItemCounterDisplay {...props}/>);
         });
         // Note on .dive(): 
         // Shallow render the one non-DOM child of the current wrapper, and return a wrapper around the result.
@@ -61,7 +61,7 @@ describe('When ItemCounterDisplay renders', () => {
         });
 
         it('should render a WithStyles() className', () => {
-            expect(wrapper.dive().find(ListItemText).props().className).toEqual(expect.stringContaining("ItemCounterDisplay"))
+            expect(wrapper.dive().find(ListItemText).props().className).toEqual(expect.stringContaining("ItemCounterDisplay"));
         });
     });
 });

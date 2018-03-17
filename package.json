@@ -49,7 +49,7 @@
     "eject": "react-scripts eject",
     "lint": "node_modules/.bin/esw webpack.config* src tools",
     "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --reporter spec buildScripts/testSetup.js src/setupTests.ts \"test_tutorial/**/*.test.js\" \"tests/**/*.test.js\"",
+    "test": "mocha --reporter spec buildScripts/testSetup.js src/setupTests.ts \"test_tutorial/**/*.test.js\" \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch"
   }
 }

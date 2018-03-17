@@ -1,7 +1,7 @@
 import React from 'react';
 import expect from 'expect';
 import {shallow} from 'enzyme';
-import AddItemPage, {AddItemPage as PresentationalAddItemPage} from '../../../src/components/items/AddItemPage';
+import ConnectedAddItemPage, {AddItemPage} from './AddItemPage';
 
 describe('When AddItemPage renders', () => {
 
@@ -12,9 +12,9 @@ describe('When AddItemPage renders', () => {
         beforeEach( () => {
             const props = {
                 classes: {root: "some class"}
-            }
+            };
     
-            wrapper = shallow(<PresentationalAddItemPage {...props}/>);
+            wrapper = shallow(<AddItemPage {...props}/>);
         });
     
         it('should render <div>, <h1>, and <p>', () => {
@@ -36,7 +36,7 @@ describe('When AddItemPage renders', () => {
         beforeEach( () => {
             const props = {};
     
-            wrapper = shallow(<AddItemPage {...props}/>);
+            wrapper = shallow(<ConnectedAddItemPage {...props}/>);
         });
     
         it('should render <div>, <h1>, and <p>', () => {

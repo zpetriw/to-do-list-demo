@@ -33,6 +33,7 @@ ListItemLink.propTypes = {
     classes: PropTypes.object.isRequired,
     icon: PropTypes.node.isRequired,
     primary: PropTypes.string.isRequired,
+    secondary: PropTypes.string,
     to: PropTypes.string.isRequired
 };
 

@@ -50,7 +50,7 @@ const AppHeader = props => {
             </Toolbar>
         </AppBar>
     );
-}
+};
 
 AppHeader.propTypes = {
     classes: PropTypes.object.isRequired,

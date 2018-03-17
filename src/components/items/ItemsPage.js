@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import { withStyles } from 'material-ui/styles';
 import ItemInput from './ItemInput';
-import {bindActionCreators} from 'redux';
+//import ReactDOM from 'react-dom';
+// Try adding a focus on the text field after Save is clicked.
 
 const styles = theme => ({
     root: {
@@ -23,6 +24,7 @@ export class ItemsPage extends React.Component {
 
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onClickSave = this.onClickSave.bind(this);
+        //this.focusInput = this.focusInput.bind(this);
     }
 
     // This runs every time the user types a character in the input box. 
@@ -33,13 +35,21 @@ export class ItemsPage extends React.Component {
     }
 
     onClickSave() {
-        console.log(this.props.createItem);
         this.props.createItem(this.state.item);
+        this.setState({item: {title: ""}});
+        //this.focusInput(this.component);
     }
 
     itemRow(item, index) {
         return <div key={index}>{item.title}</div>;
     }
+
+    // focusInput(component) {
+    //     console.log(component);
+    //     if (component) {
+    //         ReactDOM.findDOMNode(component).focus(); 
+    //     }
+    // }
 
     render() {
         return (
@@ -54,7 +64,9 @@ export class ItemsPage extends React.Component {
                     onChange={this.onTitleChange} 
                     textValue={this.state.item.title} 
                     textLabel="Title" 
-                    buttonLabel="Save"/>
+                    buttonLabel="Save"
+                    inputRef={this.focusInput}
+                    />
             </div>
         );
     }

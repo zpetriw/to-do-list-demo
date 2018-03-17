@@ -2,9 +2,9 @@ import React from 'react';
 import expect from 'expect';
 import {shallow} from 'enzyme';
 import configureMockStore from 'redux-mock-store';
-import ItemCounter, { ItemCounter as PresentationalItemCounter } from '../../../src/components/items/ItemCounter';
-import ItemCounterDisplay from '../../../src/components/items/ItemCounterDisplay';
-import AboutPage from '../../../src/components/about/AboutPage';
+import ConnectedItemCounter, {ItemCounter} from './ItemCounter';
+import ItemCounterDisplay from './ItemCounterDisplay';
+import AboutPage from '../about/AboutPage';
 
 describe('When ItemCounter renders', () => {
 
@@ -13,8 +13,8 @@ describe('When ItemCounter renders', () => {
         let wrapper;
     
         beforeEach( () => {
-            wrapper = shallow(<PresentationalItemCounter/>);
-        })
+            wrapper = shallow(<ItemCounter/>);
+        });
     
         it('should render ItemCounterDisplay', () => {
             expect(wrapper.find(ItemCounterDisplay).length).toBe(1);
@@ -32,9 +32,9 @@ describe('When ItemCounter renders', () => {
             mockStore = configureMockStore();
             store = mockStore({
                 items: ["item1", "item2"]
-            })
+            });
             // You need to dive or else you will look at Connect(ItemCounter) and not see any children.
-            wrapper = shallow(<ItemCounter store={store}/>).dive();
+            wrapper = shallow(<ConnectedItemCounter store={store}/>).dive();
         });
     
         it('should render ItemCounterDisplay', () => {

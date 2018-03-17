@@ -1,7 +1,7 @@
 import React from 'react';
 import expect from 'expect';
 import {shallow, render} from 'enzyme';
-import ItemInput, { ItemInput as PresentationalItemInput } from '../../../src/components/items/ItemInput';
+import {ItemInput} from './ItemInput';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 
@@ -14,7 +14,7 @@ describe('When ItemInput renders it', () => {
 
     let wrapper;
     let props;
-    const onChangeInput = () => {}
+    const onChangeInput = () => {};
 
     beforeEach( () => {
         props = {
@@ -25,9 +25,9 @@ describe('When ItemInput renders it', () => {
             textLabel: "Text label",
             buttonLabel: "Button label",
             onChange: onChangeInput
-        }
+        };
         
-        wrapper = shallow(<PresentationalItemInput {...props}/>);
+        wrapper = shallow(<ItemInput {...props}/>);
     });
     
     it('should render <TextField> and <Button>', () => {
