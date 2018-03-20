@@ -15,16 +15,20 @@ describe('When ItemInput renders it', () => {
     let wrapper;
     let props;
     const onChangeInput = () => {};
+    const onClickInput = () => {};
 
     beforeEach( () => {
+
         props = {
             classes: {    
                 textField: "Text class",
                 button: "Button class",
             },
             textLabel: "Text label",
+            textValue: "Text Value",
             buttonLabel: "Button label",
-            onChange: onChangeInput
+            onChange: onChangeInput,
+            onClick: onClickInput
         };
         
         wrapper = shallow(<ItemInput {...props}/>);

@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import * as itemActions from '../actions/itemActions';
 import configureMockStore from 'redux-mock-store';
 
-// Note on 'createStore()' [redux] vs configureMockStore() [redux-mock-store]: 
+// Note on 'createStore()' (redux) vs configureMockStore() (redux-mock-store): 
 // 1. 'createStore()' does not have 'getActions()' but it does update its state when an action is dispatched.
 // 2. 'configureMockStore()' does not update its state but you can still do 'getState()'. It just won't change from the initial state.
 //     You will check if the actions were dispatched by checking 'getActions()' and seeing what actions were called.

@@ -11,9 +11,11 @@ describe('When ItemCounter renders', () => {
     describe('its bare component', () => {
     
         let wrapper;
+        let props;
     
         beforeEach( () => {
-            wrapper = shallow(<ItemCounter/>);
+            props = {itemCount: 1};
+            wrapper = shallow(<ItemCounter {...props}/>);
         });
     
         it('should render ItemCounterDisplay', () => {

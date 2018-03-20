@@ -8,6 +8,7 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import ConnectedItemsPage, {ItemsPage} from './ItemsPage';
 import * as itemActions from '../../actions/itemActions';
+import renderer from 'react-test-renderer';
 
 // Note: 
 // toBe() means the two references must be for the same object.
