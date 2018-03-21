@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When ItemInput renders it should render correctly 1`] = `
+<div>
+  <div
+    aria-describedby={undefined}
+    className="MuiFormControl-root-1 MuiFormControl-marginNormal-2 Text class"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="MuiFormLabel-root-11 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9 MuiInputLabel-shrink-8"
+      data-shrink={true}
+      htmlFor="required"
+    >
+      Text label
+      <span
+        className="MuiFormLabel-asterisk-15"
+      >
+         *
+      </span>
+    </label>
+    <div
+      className="MuiInput-root-17 MuiInput-formControl-18 MuiInput-underline-21"
+    >
+      <input
+        aria-invalid={false}
+        aria-required={true}
+        autoComplete={undefined}
+        autoFocus={undefined}
+        className="MuiInput-input-25"
+        defaultValue={undefined}
+        disabled={false}
+        id="required"
+        name={undefined}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={undefined}
+        onKeyUp={undefined}
+        placeholder={undefined}
+        readOnly={undefined}
+        required={true}
+        rows={undefined}
+        type="text"
+        value="Text Value"
+      />
+    </div>
+  </div>
+  <button
+    className="MuiButtonBase-root-46 MuiButton-root-31 MuiButton-raised-36 Button class"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="0"
+    type="button"
+  >
+    <span
+      className="MuiButton-label-32"
+    >
+      Button label
+    </span>
+    <span
+      className="MuiTouchRipple-root-49"
+    />
+  </button>
+</div>
+`;

@@ -4,6 +4,7 @@ import {shallow, render} from 'enzyme';
 import {ItemInput} from './ItemInput';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
+import renderer from 'react-test-renderer';
 
 // Note: 
 // toBe() means the two references must be for the same object.
@@ -34,6 +35,13 @@ describe('When ItemInput renders it', () => {
         wrapper = shallow(<ItemInput {...props}/>);
     });
     
+    it('should render correctly', () => {
+        const tree = renderer
+            .create(<ItemInput {...props}/>)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
     it('should render <TextField> and <Button>', () => {
         expect(wrapper.find(TextField).length).toBe(1);
         expect(wrapper.find(Button).length).toBe(1);
@@ -45,7 +53,7 @@ describe('When ItemInput renders it', () => {
         expect(wrapper.find(TextField).props().onChange).toBe(onChangeInput);
     });
 
-    it.skip('should run onChangeInput when onChange is triggered', () => {
+    it('should run onChangeInput when onChange is triggered', () => {
         expect();
     });
 

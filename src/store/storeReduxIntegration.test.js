@@ -24,7 +24,7 @@ describe('When store is loaded', () => {
        // Act
        const action = itemActions.createItem(item) ;
        store.dispatch(action);
-       
+
         const actual = store.getState().items[0];
         const expected = {
             title: "Item1"

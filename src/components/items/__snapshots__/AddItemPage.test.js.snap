@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When AddItemPage renders its bare component should render correctly 1`] = `
+<div
+  className="some class"
+>
+  <h1>
+    Add an item
+  </h1>
+  <p>
+    Implement a UI to add items to our to-do list.
+  </p>
+</div>
+`;

@@ -5,6 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import ConnectedItemCounter, {ItemCounter} from './ItemCounter';
 import ItemCounterDisplay from './ItemCounterDisplay';
 import AboutPage from '../about/AboutPage';
+import renderer from 'react-test-renderer';
 
 describe('When ItemCounter renders', () => {
 
@@ -18,6 +19,13 @@ describe('When ItemCounter renders', () => {
             wrapper = shallow(<ItemCounter {...props}/>);
         });
     
+        it('should render correctly', () => {
+            const tree = renderer
+                .create(<ItemCounter {...props}/>)
+                .toJSON();
+            expect(tree).toMatchSnapshot();
+        });
+
         it('should render ItemCounterDisplay', () => {
             expect(wrapper.find(ItemCounterDisplay).length).toBe(1);
         });

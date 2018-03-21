@@ -31,12 +31,20 @@ describe('When ItemInput renders', () => {
                 },
                 textLabel: "Text label",
                 buttonLabel: "Button label",
-                items: [{title: "item1"}, {title: "item2"}]
+                items: [{title: "item1"}, {title: "item2"}],
+                createItem: () => {}
             };
             
             wrapper = shallow(<ItemsPage {...props}/>);
         });
     
+        it('should render correctly', () => {
+            const tree = renderer
+                .create(<ItemsPage {...props}/>)
+                .toJSON();
+            expect(tree).toMatchSnapshot();
+        });
+
         it('should render <h1>, <h2>, and <ItemInput>', () => {
             expect(wrapper.find('h1').text()).toEqual('Items');
             expect(wrapper.find('h2').text()).toEqual('Add Item');
@@ -54,10 +62,6 @@ describe('When ItemInput renders', () => {
             expect(wrapper.find(ItemInput).props().onClick).toEqual(wrapper.instance().onClickSave);
         });
 
-        it.skip('should call OnTitleChange when onChange is triggered', () => {
-           
-        });
-
     });
     
     describe('its withStyles(), Redux-connected component', () => {
@@ -66,13 +70,21 @@ describe('When ItemInput renders', () => {
         let store;
         let mockStore;
         let initialState = [{title: "item1"}, {title: "item2"}];
+        let props;
 
         beforeEach(() => {
             mockStore = configureMockStore();
             store = mockStore({
                 items: initialState
             });
-            wrapper = shallow(<ConnectedItemsPage store={store} />).dive();
+            props = {
+                textLabel: "Text label",
+                buttonLabel: "Button label",
+                items: [{title: "item1"}, {title: "item2"}],
+                createItem: () => {}
+            };
+
+            wrapper = shallow(<ConnectedItemsPage store={store} {...props}/>).dive();
         });
 
         it('should render a WithStyles() className', () => {
@@ -80,8 +92,7 @@ describe('When ItemInput renders', () => {
         });
 
         it('should map state.items to items', () => {
-            // mountWrapper = render(<ItemsPage store={store} />)
-            // console.log(mountWrapper)
+            expect(wrapper.dive().instance().props.items).toEqual(props.items);
         });
 
         it('should map action createItem', () => {

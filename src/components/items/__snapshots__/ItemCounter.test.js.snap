@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When ItemCounter renders its bare component should render correctly 1`] = `
+<li
+  className="MuiListItem-root-2 MuiListItem-default-5 MuiListItem-gutters-9"
+  disabled={false}
+>
+  <div
+    className="MuiListItemText-root-12 Component-counter-1"
+  >
+    <h3
+      className="MuiTypography-root-18 MuiTypography-subheading-25 MuiListItemText-primary-15"
+    >
+      Items To Do: 1
+    </h3>
+  </div>
+</li>
+`;

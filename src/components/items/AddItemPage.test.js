@@ -2,21 +2,29 @@ import React from 'react';
 import expect from 'expect';
 import {shallow} from 'enzyme';
 import ConnectedAddItemPage, {AddItemPage} from './AddItemPage';
+import renderer from 'react-test-renderer';
 
 describe('When AddItemPage renders', () => {
 
     describe('its bare component', () => {
         
         let wrapper;
+        let props;
     
         beforeEach( () => {
-            const props = {
+            props = {
                 classes: {root: "some class"}
             };
-    
             wrapper = shallow(<AddItemPage {...props}/>);
         });
     
+        it('should render correctly', () => {
+            const tree = renderer
+                .create(<AddItemPage {...props}/>)
+                .toJSON();
+            expect(tree).toMatchSnapshot();
+        });
+
         it('should render <div>, <h1>, and <p>', () => {
             expect(wrapper.find('div').length).toBe(1);
             expect(wrapper.find('h1').text()).toEqual('Add an item');
@@ -32,10 +40,10 @@ describe('When AddItemPage renders', () => {
     describe('its WithStyles() connected component', () => {
         
         let wrapper;
+        let props;
     
         beforeEach( () => {
-            const props = {};
-    
+            props = {};
             wrapper = shallow(<ConnectedAddItemPage {...props}/>);
         });
     
