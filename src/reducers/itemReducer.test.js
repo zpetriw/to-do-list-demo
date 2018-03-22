@@ -1,6 +1,5 @@
 import expect from 'expect';
 import itemReducer from './itemReducer';
-import * as actions from '../actions/itemActions';
 
 describe('itemReducer', () => {
     it('should add an item when passed CREATE_ITEM', () => {
@@ -13,10 +12,13 @@ describe('itemReducer', () => {
 
         const newItem = {title: "Item 3"};
 
-        const action = actions.createItem(newItem);
+        const action = item => ({
+            type: "CREATE_ITEM", 
+            item
+        });
 
         // Act
-        const newState = itemReducer(initialState, action);
+        const newState = itemReducer(initialState, action(newItem));
 
         // Assert
         expect(newState.length).toEqual(3);
